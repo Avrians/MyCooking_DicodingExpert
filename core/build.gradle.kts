@@ -1,10 +1,16 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.parcelize)
+    alias(libs.plugins.navigation.safe.args.kotlin)
 }
 
+apply (from = "../shared_dependencies.gradle")
+
 android {
-    namespace = "com.avrians.core"
+    namespace = "com.avrians.mycooking.core"
     compileSdk = 34
 
     defaultConfig {
@@ -12,6 +18,18 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        buildConfigField(
+            "String",
+            "API_KEY",
+            "\"bb95400b57a74d33944829e9a748b811\""
+        )
+
+        buildConfigField(
+            "String",
+            "BASE_URL",
+            "\"https://api.spoonacular.com/recipes/\""
+        )
     }
 
     buildTypes {
@@ -30,14 +48,17 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
 }
 
 dependencies {
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 }
