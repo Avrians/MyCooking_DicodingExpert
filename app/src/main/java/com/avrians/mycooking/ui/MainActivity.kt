@@ -13,7 +13,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.avrians.mycooking.R
 import com.avrians.mycooking.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

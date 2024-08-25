@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.avrians.core.R
 import com.avrians.core.databinding.ItemListRecipeBinding
 import com.avrians.core.domain.model.Recipe
+import com.avrians.core.utils.htmlParser
 import com.bumptech.glide.Glide
 
 class RecipeAdapter(
@@ -34,7 +35,7 @@ class RecipeAdapter(
             .into(holder.binding.ivRecipe)
         holder.apply {
             binding.tvTitle.text = recipe.title
-            binding.tvDescription.text = recipe.summary
+            binding.tvDescription.text = htmlParser(recipe.summary)
             binding.ivHealth.setImageResource(
                 when (recipe.veryHealthy.toString()) {
                     "true" -> R.drawable.ic_health

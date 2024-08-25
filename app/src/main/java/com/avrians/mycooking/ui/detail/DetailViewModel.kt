@@ -8,10 +8,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailViewModel @Inject constructor(private val recipeUseCase: RecipeUseCase): ViewModel() {
+class DetailViewModel @Inject constructor(private val recipeUseCase: RecipeUseCase) : ViewModel() {
     fun getDetailRecipe(id: Int) = recipeUseCase.getDetailRecipe(id).asLiveData()
 
     fun getRecipeById(id: Int) = recipeUseCase.getRecipeById(id).asLiveData()
 
-    fun setFavoriteRecipe(recipe: Recipe, state: Boolean) = recipeUseCase.setFavoriteRecipe(recipe, state)
+    fun setFavoriteRecipe(recipe: Recipe, state: Boolean) =
+        recipeUseCase.setFavoriteRecipe(recipe, state)
 }

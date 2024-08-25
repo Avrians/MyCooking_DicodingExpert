@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MyCooking</string>
-
     <string name="something_wrong">Oops.. something went wrong</string>
     <string name="image_food">Image Food</string>
     <string name="back_button">Back Button</string>

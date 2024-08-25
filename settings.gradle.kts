@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "MyCooking"
 include(":app")
 include(":core")
+include(":favorite")

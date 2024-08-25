@@ -13,7 +13,9 @@ import com.avrians.core.domain.model.Recipe
 import com.avrians.core.ui.RecipeAdapter
 import com.avrians.mycooking.R
 import com.avrians.mycooking.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private val homeViewModel: HomeViewModel by viewModels()
@@ -69,11 +71,12 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(action)
             }
         })
+        binding.rvRecipe.adapter = adapter
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-    
+
 }
