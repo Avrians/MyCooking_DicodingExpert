@@ -10,7 +10,7 @@ plugins {
 apply (from = "../shared_dependencies.gradle")
 
 android {
-    namespace = "com.avrians.mycooking.core"
+    namespace = "com.avrians.core"
     compileSdk = 34
 
     defaultConfig {
