@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.avrians.core.data.Resource
 import com.avrians.core.domain.model.Recipe
+import com.avrians.core.ui.RecipeAdapter
 import com.avrians.mycooking.R
 import com.avrians.mycooking.databinding.FragmentHomeBinding
 
@@ -57,8 +59,21 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setData(data: List<Recipe>) {
+    private fun setData(recipes: List<Recipe>) {
+        val adapter = RecipeAdapter(recipes)
+        adapter.setOnItemClickCallback(object : RecipeAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Recipe) {
+                val action = HomeFragmentDirections.actionNavigationHomeToDetailActivity(
+                    data.recipeId
+                )
+                findNavController().navigate(action)
+            }
+        })
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
     
 }
