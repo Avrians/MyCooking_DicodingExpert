@@ -9,6 +9,7 @@ plugins {
 
 apply (from = "../shared_dependencies.gradle")
 
+
 android {
     namespace = "com.avrians.mycooking"
     compileSdk = 34
@@ -19,6 +20,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+
+        multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
